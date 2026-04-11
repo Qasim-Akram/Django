@@ -1,0 +1,5 @@
+<form method="POST" action="{% url 'sendinfo' %}">
+    {% csrf_token  %} 
+     {{form.as_p}}
+    <button type = "submit">SEND POST</button>
+</form>

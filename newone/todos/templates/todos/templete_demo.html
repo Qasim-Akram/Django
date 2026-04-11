@@ -1,0 +1,13 @@
+<h1>{{name}}</h1>
+<h1>{{Age}}</h1>
+
+
+<ul>
+    {% for skill in speciality %}
+    <li>{{skill}}</li>
+    {% endfor %}
+</ul>
+
+{% if speciality|length > 1 %}
+ <h1>{{name}} is very good student</h1>
+{% endif %}
