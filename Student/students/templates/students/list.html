@@ -1,0 +1,43 @@
+{% extends 'students/base.html' %}
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">All Students ({{ students.count }})</h5>
+    </div>
+    <div class="card-body p-0">
+        {% if students %}
+        <table class="table table-hover mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>#</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Roll No.</th>
+                    <th>Department</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.email }}</td>
+                    <td>{{ student.roll_number }}</td>
+                    <td>{{ student.department }}</td>
+                    <td>
+                        <a href="/edit/{{ student.pk }}/" class="btn btn-sm btn-outline-primary">Edit</a>
+                        <a href="/delete/{{ student.pk }}/" class="btn btn-sm btn-outline-danger">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <div class="text-center py-5 text-muted">
+            <p>No students yet. <a href="/add/">Add one!</a></p>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
